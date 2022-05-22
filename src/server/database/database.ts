@@ -2,13 +2,15 @@ import mongoose from "mongoose";
 
 import { siteConfig } from "../../site-config";
 
-mongoose.connect(siteConfig.server.database.connection.development, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+try {
+  mongoose.connect(siteConfig.server.database.connection.development, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+} catch (err) {
+  console.error(err);
+}
 
 const connection = mongoose.connection;
-
-
 
 export default connection;
