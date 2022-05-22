@@ -34,7 +34,7 @@
     },
     "database": {
       "connection": {
-        "development": "mongodb://localhost:27017/Postcard"
+        "development": "mongodb://127.0.0.1:27017/Postcard"
       }
     },
     "htmlRoutes": [
