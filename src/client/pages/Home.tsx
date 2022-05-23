@@ -285,7 +285,7 @@ const Home: React.FC<Props> = (props) => {
             categoryName:
               "/Collectibles/Postcards & Supplies/Postcards/Non-Topographical Postcards",
             conditionId: `3000-Used`,
-            description: textDetectionTwo,
+            description: textDetectionTwo.replace('\n', " "),
             duration: "GTC",
             ean: "",
             epid: "",
@@ -298,7 +298,7 @@ const Home: React.FC<Props> = (props) => {
             paymentProfileName: "eBay Payments",
             paypalAccepted: 1,
             paypalEmailAddress: "EMAIL_HERE",
-            primaryPhotoUrl: `${photoOne};${photoTwo}`,
+            primaryPhotoUrl: `${photoOne} ${photoTwo}`,
             productCompliancePolicyID: "",
             quantity: 1,
             refundOption: "",
@@ -318,7 +318,9 @@ const Home: React.FC<Props> = (props) => {
             sku: `PCO${sku}`,
             startPrice: 7.99,
             takeBackPolicyID: "",
-            title: `Postcard: ${textDetectionOne}`.slice(0, 70),
+            title: `Postcard: ${textDetectionOne}`
+              .replace("\n", " ")
+              .slice(0, 70),
             upc: "",
           };
         }),
@@ -489,14 +491,18 @@ const Home: React.FC<Props> = (props) => {
                     <tr>
                       <td>
                         {" "}
-                        <SmallImage onClick={() => {
-                          window.open(item?.items?.photoOne, '_blank')
-                        }} src={item?.items?.photoOne}></SmallImage>
+                        <SmallImage
+                          onClick={() => {
+                            window.open(item?.items?.photoOne, "_blank");
+                          }}
+                          src={item?.items?.photoOne}></SmallImage>
                       </td>
                       <td>
-                        <SmallImage onClick={() => {
-                          window.open(item?.items?.photoTwo, '_blank')
-                        }} src={item?.items?.photoTwo}></SmallImage>
+                        <SmallImage
+                          onClick={() => {
+                            window.open(item?.items?.photoTwo, "_blank");
+                          }}
+                          src={item?.items?.photoTwo}></SmallImage>
                       </td>
                       <td>
                         <Typography.Typography variant="span">
