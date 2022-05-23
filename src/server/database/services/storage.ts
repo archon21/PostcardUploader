@@ -24,15 +24,15 @@ const StorageService = {
   },
   POST: async ({ request, response }) => {
     try {
-      console.log(request.files, request.file, request.body, "FILESPLEASE");
+      // console.log(request.files, request.file, request.body, "FILESPLEASE");
 
       if (request.files?.length > 0) {
         const promises = request.files.map((file, index) => {
-          console.log(file.path);
+          console.log(file, "FILE");
 
           return storage
             .bucket(siteConfig.server.storage.bucket)
-            .upload(file.path, { contentType: file.mimetype });
+            .upload(file.path, { contentType: file.mimetype, destination: `${file.filename}.jpg` });
         });
         const result = await Promise.all(promises);
         await console.log(result, "RESULT");
