@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import { siteConfig } from "../../site-config";
 
 try {
-  mongoose.connect(siteConfig.server.database.connection.production, {
+  mongoose.connect(siteConfig.server.database.connection.development, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });

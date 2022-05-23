@@ -31,8 +31,6 @@ const OCRService = {
         google.cloud.vision.v1.IAnnotateImageResponse[]
       >[] = [];
       objects.forEach((object) => {
-        console.log(object);
-
         textDetectionPromises.push(
           client.textDetection(
             `gs://${bucketName}/${object.items.photoOneName}`
@@ -46,35 +44,29 @@ const OCRService = {
       });
 
       const textDetectionArray = await Promise.all(textDetectionPromises);
-      console.log(textDetectionArray);
 
       const contentUpdatePromises: Promise<any>[] = [];
-      let imageAccess = 0
+      let imageAccess = 0;
       for (let i = 0; i < objects.length; i++) {
         const object = objects[i];
-        console.log(
-          textDetectionArray[i][0].textAnnotations?.[0]?.description,
-          "YO"
-        );
-        console.log(object);
-        
 
-        contentUpdatePromises.push(
-          Content.updateOne({
-            name: object.name,
-            items: {
-              ...object.items,
-              textDetectionOne:
-                textDetectionArray[imageAccess][0].textAnnotations?.[0]?.description,
-              textDetectionTwo:
-                textDetectionArray[imageAccess + 1][0].textAnnotations?.[0]?.description,
-            },
-          })
+        const replacement = {
+          name: Math.random() * 2342304238412309841234,
+          items: {
+            ...object.items,
+            textDetectionOne:
+              textDetectionArray[imageAccess][0]?.fullTextAnnotation?.text,
+            textDetectionTwo:
+              textDetectionArray[imageAccess + 1][0]?.fullTextAnnotation?.text,
+          },
+        };
+
+        const yp = await Content.findOneAndReplace(
+          { name: object.name },
+          replacement
         );
-        imageAccess += 2
+        imageAccess += 2;
       }
-
-      await Promise.all(contentUpdatePromises);
 
       // const filename = "b0268729a4b10d5362c3d0e6e9d9f622";
 

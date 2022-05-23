@@ -66,13 +66,13 @@ const Gallery: React.FC<Props> = (props) => {
   const onDragEnd = (droppedItem) => {
     if (!droppedItem.destination) return;
     var updatedList = [...items];
-    console.log(updatedList, "yeh");
+
     // Remove dragged item
     const [reorderedItem] = updatedList.splice(droppedItem.source.index, 1);
     // Add dropped item
     updatedList.splice(droppedItem.destination.index, 0, reorderedItem);
     setItems(updatedList);
-    console.log(updatedList);
+
   };
 
   useEffect(() => {
@@ -89,7 +89,7 @@ const Gallery: React.FC<Props> = (props) => {
             {...provided.droppableProps}
             ref={provided.innerRef}>
             {items.map((item, index) => {
-              console.log(item.id);
+
               return (
                 <Draggable
                   key={String(item.id)}

@@ -16,7 +16,7 @@ const Request = ({
     if (files) {
       config.headers["Content-Type"] = files[0]?.type;
       const formData = new FormData();
-      console.log(files);
+      
       
       formData.append("files", files);
       config.data = formData;

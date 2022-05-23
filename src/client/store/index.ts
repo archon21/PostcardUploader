@@ -76,7 +76,7 @@ class Store {
           url: `/api/${service.accessorName.toLowerCase()}`,
           method: "GET",
         });
-        console.log(data, service.stateName);
+        
 
         newDefaultState[service.stateName] = data;
       }

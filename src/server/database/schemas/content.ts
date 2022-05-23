@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const ContentSchema = new mongoose.Schema({
-  name: { type: String , unique: true},
+  name: { type: String },
   items: {
     type: Object,
   },

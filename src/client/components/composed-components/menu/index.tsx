@@ -709,7 +709,7 @@ const MenuItem: React.FC<PropsMenuItem> = (props) => {
                           amount: e.target.value,
                           priceType: "amount",
                         };
-                        console.log(priceItem);
+
 
                         handleMenuChange({
                           value: priceItem,
@@ -911,7 +911,7 @@ const MenuDisplayHeader = ({
 }) => {
   const { mode } = store.defaultState;
 
-  console.log("header", toJS(mode));
+  
   return (
     <Layout.Flex column margin=".5em 0">
       {mode === "edit" && (

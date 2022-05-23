@@ -4,19 +4,19 @@ import React, {
   SetStateAction,
   useEffect,
   useState,
-} from 'react';
+} from "react";
 import {
   Switch,
   Route,
   withRouter,
   RouteComponentProps,
   Redirect,
-} from 'react-router-dom';
+} from "react-router-dom";
 
-import * as Pages from './pages';
+import * as Pages from "./pages";
 
-import { Interfaces, siteConfig } from '../site-config';
-import { Location, History } from 'history';
+import { Interfaces, siteConfig } from "../site-config";
+import { Location, History } from "history";
 
 interface Props extends RouteComponentProps {
   defaultState: object;
@@ -28,18 +28,16 @@ const createRoute = (htmlRoutesConfig: object, defaultState: object) => {
   const clientRoutes: Array<ReactElement> = Object.entries(
     htmlRoutesConfig
   ).map(([key, { component, url }]: [string, Interfaces.Route]) => {
-    console.log(component, url);
-    
     const ComponentToRender = Pages[component];
-    console.log(ComponentToRender);
-    
+
     return (
       <Route
         key={key}
         exact
         path={url}
-        render={() => <ComponentToRender defaultState={defaultState} />}
-      ></Route>
+        render={() => (
+          <ComponentToRender defaultState={defaultState} />
+        )}></Route>
     );
   });
   return clientRoutes;

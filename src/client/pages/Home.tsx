@@ -318,7 +318,7 @@ const Home: React.FC<Props> = (props) => {
             sku: `PCO${sku}`,
             startPrice: 7.99,
             takeBackPolicyID: "",
-            title: textDetectionOne,
+            title: `Postcard: textDetectionOne`.slice(0, 70),
             upc: "",
           };
         }),

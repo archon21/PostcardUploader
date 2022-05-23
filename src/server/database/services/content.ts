@@ -5,7 +5,7 @@ const ContentService = {
     const page = request?.params?.page;
 
     const content = await Content.find({});
-    console.log(content);
+    
 
     return response?.json ? response.json(content).status(200) : content;
   },
