@@ -285,7 +285,7 @@ const Home: React.FC<Props> = (props) => {
             categoryName:
               "/Collectibles/Postcards & Supplies/Postcards/Non-Topographical Postcards",
             conditionId: `3000-Used`,
-            description: textDetectionTwo.replace('\n', " "),
+            description: textDetectionTwo.replace(/[\n\r]/g, " "),
             duration: "GTC",
             ean: "",
             epid: "",
@@ -319,7 +319,7 @@ const Home: React.FC<Props> = (props) => {
             startPrice: 7.99,
             takeBackPolicyID: "",
             title: `Postcard: ${textDetectionOne}`
-              .replace("\n", " ")
+              .replace(/[\n\r]/g, " ")
               .slice(0, 70),
             upc: "",
           };
