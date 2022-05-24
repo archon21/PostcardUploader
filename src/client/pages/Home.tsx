@@ -298,7 +298,7 @@ const Home: React.FC<Props> = (props) => {
             paymentProfileName: "eBay Payments",
             paypalAccepted: 1,
             paypalEmailAddress: "EMAIL_HERE",
-            primaryPhotoUrl: `${photoOne} ${photoTwo}`,
+            primaryPhotoUrl: `${photoOne}|${photoTwo}`,
             productCompliancePolicyID: "",
             quantity: 1,
             refundOption: "",
